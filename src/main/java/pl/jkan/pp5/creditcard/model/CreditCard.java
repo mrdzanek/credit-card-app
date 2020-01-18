@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 
 public class CreditCard {
     private BigDecimal limit;
+    private BigDecimal balance;
 
     public void assignLimit(BigDecimal initialLimit) {
 
@@ -15,9 +16,18 @@ public class CreditCard {
         }
 
         limit = initialLimit;
+        balance = initialLimit;
     }
 
     public BigDecimal limit() {
         return limit;
+    }
+
+    public void withdraw(BigDecimal amount) {
+        this.balance = balance.subtract(amount);
+    }
+
+    public BigDecimal currentBalance() {
+        return balance;
     }
 }
