@@ -35,4 +35,12 @@ class CreditCard {
     public BigDecimal currentBalance() {
         return balance;
     }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public CardSummary getSummary() {
+        return new CardSummary(balance);
+    }
 }

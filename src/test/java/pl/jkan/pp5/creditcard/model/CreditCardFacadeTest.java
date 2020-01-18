@@ -1,21 +1,26 @@
 package pl.jkan.pp5.creditcard.model;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-import java.awt.*;
 import java.math.BigDecimal;
 
 public class CreditCardFacadeTest {
 
     private InMemoryCreditCardStorage creditCardStorage;
 
+    @Before
+    public void setup() {
+        creditCardStorage = new InMemoryCreditCardStorage();
+    }
+
     @Test
     public void allowWithdrawFromCards() {
         thereIsCreditCardIdentifiedWitNumber("1234-56789");
 
         CreditCardFacade api = thereIsCCApi();
-        api.withdraw("1234-56789", BigDecimal.valueOf(200));
+        api.withdraw(new WithdrawCommand("1234-56789", BigDecimal.valueOf(200)));
 
         CardSummary summary = api.getSummary("1234-56789");
         Assert.assertNotNull(summary);
@@ -23,7 +28,7 @@ public class CreditCardFacadeTest {
     }
 
     private CreditCardFacade thereIsCCApi() {
-        return new CreditCardFacade();
+        return new CreditCardFacade(this.creditCardStorage);
     }
 
     private void thereIsCreditCardIdentifiedWitNumber(String number) {
