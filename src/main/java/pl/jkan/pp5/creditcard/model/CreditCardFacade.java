@@ -1,5 +1,8 @@
 package pl.jkan.pp5.creditcard.model;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class CreditCardFacade {
     private CreditCardStorage creditCardStorage;
 
@@ -16,5 +19,11 @@ public class CreditCardFacade {
     public CardSummary getSummary(String number) {
         CreditCard creditCard = creditCardStorage.load(number);
         return creditCard.getSummary();
+    }
+
+    public List<CardSummary> getCardsReport() {
+        return creditCardStorage.all().stream()
+                .map(CreditCard::getSummary)
+                .collect(Collectors.toList());
     }
 }

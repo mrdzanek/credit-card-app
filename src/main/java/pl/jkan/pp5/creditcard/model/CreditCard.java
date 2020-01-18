@@ -41,6 +41,6 @@ class CreditCard {
     }
 
     public CardSummary getSummary() {
-        return new CardSummary(balance);
+        return new CardSummary(number, balance);
     }
 }
