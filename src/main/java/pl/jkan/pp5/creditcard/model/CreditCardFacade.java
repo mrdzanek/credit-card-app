@@ -1,9 +1,9 @@
 package pl.jkan.pp5.creditcard.model;
 
 public class CreditCardFacade {
-    private InMemoryCreditCardStorage creditCardStorage;
+    private CreditCardStorage creditCardStorage;
 
-    public CreditCardFacade(InMemoryCreditCardStorage creditCardStorage) {
+    public CreditCardFacade(CreditCardStorage creditCardStorage) {
         this.creditCardStorage = creditCardStorage;
     }
 

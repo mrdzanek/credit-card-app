@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 public class CreditCardFacadeTest {
 
-    private InMemoryCreditCardStorage creditCardStorage;
+    private CreditCardStorage creditCardStorage;
 
     @Before
     public void setup() {
