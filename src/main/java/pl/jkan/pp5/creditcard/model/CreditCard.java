@@ -5,9 +5,14 @@ package pl.jkan.pp5.creditcard.model;
 
 import java.math.BigDecimal;
 
-public class CreditCard {
+class CreditCard {
     private BigDecimal limit;
     private BigDecimal balance;
+    private String number;
+
+    public CreditCard(String number) {
+        this.number = number;
+    }
 
     public void assignLimit(BigDecimal initialLimit) {
 
