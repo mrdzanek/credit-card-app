@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class CreditCardTest {
 
@@ -15,16 +16,20 @@ public class CreditCardTest {
     @Test
     public void itAllowAssignLimitToCreditCard() {
         //Arrange // Given
-        CreditCard creditCard = new CreditCard();
+        CreditCard creditCard = thereIsCreditCard();
         //Act     // When
         creditCard.assignLimit(BigDecimal.valueOf(INITIAL_LIMIT));
         //Assert  // Then // Expect
         Assert.assertEquals(BigDecimal.valueOf(INITIAL_LIMIT), creditCard.limit());
     }
 
+    private CreditCard thereIsCreditCard() {
+        return new CreditCard("123456789");
+    }
+
     @Test
     public void denyAssignLimitBelowMinimum() {
-        CreditCard creditCard = new CreditCard();
+        CreditCard creditCard = thereIsCreditCard();
 
         try {
             creditCard.assignLimit(BigDecimal.valueOf(500));
@@ -37,7 +42,7 @@ public class CreditCardTest {
     @Test
     public void withdrawFromCard() {
         //Arrange // Given
-        CreditCard creditCard = new CreditCard();
+        CreditCard creditCard = thereIsCreditCard();
         creditCard.assignLimit(BigDecimal.valueOf(INITIAL_LIMIT));
         //ACt / When
         creditCard.withdraw(BigDecimal.valueOf(200));
